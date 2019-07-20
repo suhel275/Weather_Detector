@@ -1,0 +1,29 @@
+<!-- this file will run when ever  on browser [/help.html] is run-->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Help</title>
+       <!--<link  rel="stylesheet" href="./css/style.css">  rel means [relationship] in href we gave 
+    [relative path] we gave [.] that means we are talking about curret directory then remaining path-->
+     <link rel="icon" href="/img/weather.png"><!-- here we are setting our icon where title is present -->
+    <link rel="stylesheet" href="/css/style.css"><!--[link] is a [empty] element that means it does not 
+        have closin tag .this is [absolute path] that means when we give [/]
+       that means it will take the directory that we introduced in [app.js] that is [public] that's why here
+        also css file working while this directory is different -->
+        </head>
+        </head>
+    </head>
+
+    <body>
+
+    <div class="main-containt"><!-- we can give multiple class name that means if any class nameuse to set
+    // property then it will apply here -->
+    {{>header}}<!-- here [header.hbs] file is included -->
+    <p>{{issue}}</p><!-- this object property is passed from [app.js] file, and directly here is used -->
+    </div>
+
+    {{>footer}}<!-- here [footer.hbs] file is included -->
+    
+    </body>
+</html>
