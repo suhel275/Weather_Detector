@@ -23,10 +23,16 @@ const messageTwo = document.querySelector('#message-2');
 
 // it was a coding challenge ...
 const fetchData = (location)=>{
-const url = `http://localhost:3000/weather?address=${location}`;// till now what we was doing that this url we were giving on 
+//const url = `http://localhost:3000/weather?address=${location}`;// till now what we was doing that this url we were giving on 
 // browser search field and printing on browser from the server , but now here we are using client side
 // javascript and from here we are passing the url and it will fetch data from server then that we will
 // put on browser just now we are puting on browser console
+// but this url will work only for localhost but when we will deployee application on heruko server then it 
+// not work because in heroku server another port will be given
+const url = `/weather?address=${location}`;// this url will work in both , in local host and heroku also
+// because what ever port will be provider by [src/app.js] application , it will take it , it is like we 
+// put all url in [header.hbs] file
+
 fetch(url).then((response)=>{// response will come as json formate because from server it will pass only json 
     // formate
     response.json().then((data)=>{

@@ -1,6 +1,5 @@
 const path = require('path');// [path] is a core module of node.js so no requirement to install it.
 const express = require('express');// we have to install it first
-const app = express();// by calling this function we are creating new express application
 const hbs = require('hbs'); // it is importing for [partial]
 const geocode = require('./utils/geocode');// here we are importing [geocode] file
 const forecast = require('./utils/forecast');// here we are importing [forecast] file
@@ -10,6 +9,12 @@ const forecast = require('./utils/forecast');// here we are importing [forecast]
 //console.log(path.join(__dirname,'../public'));// here we are manipulaiting the string, in simple language 
 // [__dirname] contains current directory path , so in 2nd argument we are providing the path to go where
 // our [html] files are present form current directory, so it will print full path for [public] directory
+
+const app = express();// by calling this function we are creating new express application
+const port = process.env.PORT || 3000 ;// if we are running this application locally in our system then it will
+// take port number 3000, but if we deployed on heroku then heroku will give port number and it will continueslly
+//change , so this line will check heroku provided any port number or not , if not then 3000 will be assign
+// to run on local machine, [evr] environment variable , it is an object
 
 /*************************** Define paths for express config **********************************/
 
@@ -240,11 +245,13 @@ app.get('*',(req,res)=>{// if url like that
 
 
 
-app.listen(3000,()=>{// to start the server we have to call this method and provode the port number
+//app.listen(3000,()=>{// to start the server we have to call this method and provode the port number
     // it will be use only one time in our application
     // [3000] is common development port
     // process of starting up the server is asyncronous process, it will happen almost instantly
-  console.log('server is up on port 3000');// this will print on command prompt to know that server is
+    // but this line will work only for local host
+    app.listen(port,()=>{// here [port] value will be that heroku provided or 3000
+  console.log(`server is up on port ${port}`);// this will print on command prompt to know that server is
   // started, when we run on command prompt then after run it will not stop because process is going on
   // listening and responding, we have to externally press [ctrl + c] to stop , remember one thing that 
   // if we do changes in file then we have to stop server and start again so better use [nodemon] so whenever
