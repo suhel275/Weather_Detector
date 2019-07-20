@@ -1,4 +1,4 @@
-console.log('this is client side javascript file.....');
+//console.log('this is client side javascript file.....');// it was for checking purpose
 
 /*******************************************************************************************************
  
